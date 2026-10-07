@@ -1,0 +1,347 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendWise Dashboard</title>
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --brand-color: #2563eb;
+            --accent-color: #16a34a;
+            --background-color: #f3f4f6;
+            --surface-color: #ffffff;
+            --primary-text: #111827;
+            --secondary-text: #6b7280;
+        }
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--background-color);
+            color: var(--primary-text);
+        }
+
+        /* Overall Dashboard - CSS Grid */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            grid-template-rows: 80px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar - Flexbox */
+        .sidebar {
+            grid-row: 1 / 3;
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+            background: var(--surface-color);
+            border-right: 1px solid #e5e7eb;
+        }
+
+        .logo {
+            margin-bottom: 35px;
+            color: var(--brand-color);
+            font-size: 24px;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav a {
+            padding: 12px 15px;
+            color: var(--secondary-text);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 200ms ease;
+        }
+
+        .nav a:hover {
+            background: var(--background-color);
+            color: var(--brand-color);
+        }
+
+        .nav a.active {
+            background: var(--brand-color);
+            color: white;
+        }
+
+        /* Header - Flexbox */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 30px;
+            background: var(--surface-color);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .header h2 {
+            font-size: 20px;
+        }
+
+        .header p {
+            margin-top: 5px;
+            color: var(--secondary-text);
+            font-size: 14px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--brand-color);
+            color: white;
+            border-radius: 50%;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 30px;
+        }
+
+        .main-content > h1 {
+            margin-bottom: 20px;
+        }
+
+        /* Cards - CSS Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Individual Card - Flexbox */
+        .card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 25px;
+            background: var(--surface-color);
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+
+            /* Micro-interaction */
+            transition: transform 200ms ease, box-shadow 200ms ease;
+        }
+
+        /* Hover and Keyboard Focus */
+        .card:hover,
+        .card:focus {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            outline: none;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--background-color);
+            border-radius: 10px;
+            font-size: 25px;
+            flex-shrink: 0;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .card p {
+            color: var(--secondary-text);
+            font-size: 14px;
+        }
+
+        .card strong {
+            margin-left: auto;
+            font-size: 20px;
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 767px) {
+
+            .dashboard {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto 1fr;
+            }
+
+            .sidebar {
+                grid-row: auto;
+            }
+
+            .nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <h1 class="logo">SpendWise</h1>
+
+            <nav class="nav">
+                <a href="#" class="active">Dashboard</a>
+                <a href="#">Transactions</a>
+                <a href="#">Budget</a>
+                <a href="#">Savings</a>
+                <a href="#">Reports</a>
+                <a href="#">Settings</a>
+            </nav>
+
+        </aside>
+
+
+        <!-- Header -->
+        <header class="header">
+
+            <div>
+                <h2>Good morning, Jacob 👋</h2>
+                <p>Here's your spending overview</p>
+            </div>
+
+            <div class="profile">
+                <span>October 2026</span>
+                <div class="profile-icon">J</div>
+            </div>
+
+        </header>
+
+
+        <!-- Main Dashboard Content -->
+        <main class="main-content">
+
+            <h1>Spending Overview</h1>
+
+            <div class="card-grid">
+
+                <!-- Food -->
+                <article class="card" tabindex="0">
+                    <div class="card-icon">🍔</div>
+
+                    <div>
+                        <h2>Food</h2>
+                        <p>This month</p>
+                    </div>
+
+                    <strong>$180</strong>
+                </article>
+
+
+                <!-- Transport -->
+                <article class="card" tabindex="0">
+                    <div class="card-icon">🚗</div>
+
+                    <div>
+                        <h2>Transport</h2>
+                        <p>This month</p>
+                    </div>
+
+                    <strong>$95</strong>
+                </article>
+
+
+                <!-- Rent -->
+                <article class="card" tabindex="0">
+                    <div class="card-icon">🏠</div>
+
+                    <div>
+                        <h2>Rent</h2>
+                        <p>This month</p>
+                    </div>
+
+                    <strong>$300</strong>
+                </article>
+
+
+                <!-- Entertainment -->
+                <article class="card" tabindex="0">
+                    <div class="card-icon">🎬</div>
+
+                    <div>
+                        <h2>Entertainment</h2>
+                        <p>This month</p>
+                    </div>
+
+                    <strong>$60</strong>
+                </article>
+
+
+                <!-- Savings -->
+                <article class="card" tabindex="0">
+                    <div class="card-icon">💰</div>
+
+                    <div>
+                        <h2>Savings</h2>
+                        <p>This month</p>
+                    </div>
+
+                    <strong>$150</strong>
+                </article>
+
+
+                <!-- Utilities -->
+                <article class="card" tabindex="0">
+                    <div class="card-icon">💡</div>
+
+                    <div>
+                        <h2>Utilities</h2>
+                        <p>This month</p>
+                    </div>
+
+                    <strong>$75</strong>
+                </article>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
+```
